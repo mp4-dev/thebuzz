@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, redirect, render_template
+from flask import Flask, request, redirect, render_template, flash
 from . import db
 
 def create_app(test_config=None):
@@ -23,8 +23,17 @@ def create_app(test_config=None):
     @app.route("/",methods=['POST','GET'])
     def index():
         if request.method == 'POST':
+            err = None
             content = request.form['content']
-            db.query_db("INSERT INTO posts (content) VALUES(?)", (content,))
+
+            if not content:
+                err = "Content cannot be empty!"
+
+            if err is not None:
+                flash(err)
+            else:
+                db.query_db("INSERT INTO posts (content) VALUES(?)", (content,))
+                
             return redirect("/")
         else:
             posts = db.query_db("SELECT content FROM posts")
