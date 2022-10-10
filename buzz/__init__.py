@@ -1,5 +1,6 @@
 import os
-from flask import Flask
+from flask import Flask, request, redirect, render_template
+from . import db
 
 def create_app(test_config=None):
     app = Flask(__name__)
@@ -13,15 +14,20 @@ def create_app(test_config=None):
     else:
         app.config.from_pyfile('config.py')
 
-    from . import db
     db.init_app(app)
 
     @app.route("/hello")
     def hello():
         return "hello world"
     
-    @app.route("/")
+    @app.route("/",methods=['POST','GET'])
     def index():
-        return
+        if request.method == 'POST':
+            content = request.form['content']
+            db.query_db("INSERT INTO posts VALUES(?)", (content))
+            return redirect("/")
+        else:
+            posts = db.query_db("SELECT * FROM posts")
+            return render_template(posts=posts)
 
     return app
