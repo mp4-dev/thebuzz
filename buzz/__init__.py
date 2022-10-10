@@ -24,10 +24,10 @@ def create_app(test_config=None):
     def index():
         if request.method == 'POST':
             content = request.form['content']
-            db.query_db("INSERT INTO posts VALUES(?)", (content))
+            db.query_db("INSERT INTO posts (content) VALUES(?)", (content,))
             return redirect("/")
         else:
-            posts = db.query_db("SELECT * FROM posts")
-            return render_template(posts=posts)
+            posts = db.query_db("SELECT content FROM posts")
+            return render_template('index.html', posts=posts)
 
     return app
