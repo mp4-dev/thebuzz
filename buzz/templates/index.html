@@ -6,7 +6,10 @@
 
 {% block body %}
     <header>
-        The Buzz at Tech
+        <div class="img-container" id="logo-container">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="" id="logo">
+        </div>
+        <div class="name">THE BUZZ</div>
     </header>
 
     <main>
