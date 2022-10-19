@@ -1,3 +1,5 @@
+/* OVERALL HTML */
+
 body {
     display: flex;
     font-family: 'Montserrat', sans-serif;
@@ -9,9 +11,17 @@ body {
     background-color: #f5f5f5;
 }
 
+main {
+    display: flex;
+    flex: 0 1 100%;
+    flex-wrap: wrap;
+    max-width: 100%;
+}
+/* HEADER */
+
 header {
     display: flex;
-    flex: 1 0 100%;
+    flex: 1 1 100%;
     background-color: #FBEAAB;
     font-size: 40px;
     padding: 10px;
@@ -30,3 +40,82 @@ header {
 .name {
     padding-left: 10px;
 }
+
+/* INPUT AREA */
+
+form {
+    display: flex;
+    flex: 0 1 100%;
+    padding: 25px 25px;
+    justify-content: center;
+    align-items: center;
+}
+
+form .textarea-container {
+    display: flex;    
+    flex: 0 1 50%;
+    padding-right: 5px;
+}
+
+.textarea-container textarea {
+    flex-grow: 1;
+    border: 2px solid #454545;
+    color: #454545;
+    border-radius: 15px;
+    resize: none;
+    padding: 10px;
+}
+
+.button-container {
+
+}
+
+button {
+    background: transparent;
+    border: 2px solid #454545;
+    border-radius: 15px;
+    padding: 10px;
+    color: #454545;
+}
+
+/* POSTS */
+.posts-container {
+    display: flex;
+    flex: 0 0 100%;
+    overflow-wrap: break-word;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.post {
+    /* border: 1px solid red; */
+    border-radius: 15px;
+    display: flex;
+    flex: 0 0 60%;
+    flex-wrap: wrap;
+    overflow: hidden;
+    margin-top: 15px;
+}
+
+.head-bar {
+    background-color: #FBEAAB;
+    flex: 0 1 100%;
+    padding: 10px;
+}
+
+.head-bar .img-container {
+    width: 40px;
+}
+
+.post-content {
+    display: flex;
+    flex: 0 1 100%;
+    overflow-wrap: break-word;
+    max-width: 100%;
+    padding: 10px;
+    border: 1px solid #b8b8b8;
+    border-top: none;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+/* FOOTER */
