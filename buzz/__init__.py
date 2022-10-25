@@ -36,7 +36,8 @@ def create_app(test_config=None):
                 
             return redirect("/")
         else:
-            posts = db.query_db("SELECT content FROM posts")
+            posts = db.query_db("SELECT content, created FROM posts ORDER BY created DESC", reverse=True)
+            print(posts)
             return render_template('index.html', posts=posts)
 
     return app
